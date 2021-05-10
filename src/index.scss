@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import './styles/reset';
+@import './styles/variables';
+@import './styles/mixins';
+@import './styles/header';
+@import './styles/about';
+@import './styles/travel';
+@import './styles/tour';
+@import './styles/sign_up';
+@import './styles/footer';
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+}
+
+body::-webkit-scrollbar {
+    width: 8px; 
+    height: 6px;
+    background-color: rgb(211, 198, 198);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #504e4f;
+    border-radius: 9em;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100%;
+    overflow: hidden;
+    -webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}

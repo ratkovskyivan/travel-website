@@ -1,0 +1,133 @@
+@mixin adaptiv-value($property, $startSize, $minSize, $type) {
+    $addSize: $startSize - $minSize;
+    @if $type == 1 {
+        // Если меньше контейнера
+        #{$property}: $startSize + px;
+        @media (max-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+        }
+    } @else if $type == 2 {
+        // Если больше контейнера
+        #{$property}: $startSize + px;
+        @media (min-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+        }
+    } @else {
+        // Всегда
+        #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+    }
+}
+
+@mixin container {
+    position: relative;
+    max-width: 1675px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+
+    @media (max-width: 1100px) {
+        max-width: 970px;
+    }
+
+    @media (max-width: 992px) {
+        max-width: 750px;
+    }
+
+    @media (max-width: 767px) {
+        max-width: none;
+        padding: 0;
+		margin-left: 0;
+    	margin-right: 0;
+    }
+}
+
+@mixin translate($x, $y, $opacity) {
+    transform: translate($x, $y);
+    opacity: $opacity;
+}
+
+@mixin navbar($color) {
+    &__link {
+        display: inline-block;
+        margin-right: 100px;
+        text-transform: capitalize;
+        
+        @include adaptiv-font(20, 16, 400, $header);
+
+        letter-spacing: 2px;
+        
+        a {
+            color: $color;
+            transition: all .4s ease-out;
+
+            &:hover {
+                color: rgb(68, 66, 66);
+            }
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+@mixin center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin text {
+    .title {
+        margin-bottom: 35px;
+        text-transform: capitalize;
+
+        @include adaptiv-font(22, 16, 500, #d5d5d5);
+    }
+
+    .subtitle {
+        margin-bottom: 53px;
+        word-spacing: 5px;
+        line-height: 36px;
+
+        @include adaptiv-font(30, 18, 500, #000);
+    }
+
+    .desc {
+        margin-bottom: 65px;
+
+        @include adaptiv-font(22, 16, 400, #5b5b5c);
+    }
+}
+
+@mixin font($size, $weight, $color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+@mixin adaptiv-font($pcSize, $mobSize, $weight, $color) {
+    $addSize: $pcSize - $mobSize;
+    $maxWidth: $maxWidth - 320;
+    font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+    font-weight: $weight;
+    color: $color;
+}
+
+@mixin btn_info($border_color, $text_color) {
+    a {
+        padding: calc(5px + 15 * ((100vw - 320px) / #{$maxWidthContainer - 320})) calc(55px + 30 * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+        
+        border: 2px solid $border_color;
+        text-transform: uppercase;
+        @include adaptiv-font(18, 14, 400, $text-color);
+
+        transition: all .4s ease-out;
+
+        &:hover {
+            background-color: rgba(227, 226, 236, 0.644);
+        }
+    }
+}

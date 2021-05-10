@@ -1,0 +1,96 @@
+.footer {
+    height: 335px;
+
+    .container {
+        @include container;
+
+        .footer__inner {
+            height: 100%;
+            display: flex;
+            -webkit-justify-content: center;
+                    justify-content: center;
+            -webkit-align-items: center;
+                    align-items: center;
+    
+            .footer__wrapper {
+                height: 40%;
+                width: 50%;
+                display: flex;
+                -webkit-flex-direction: column;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
+                -webkit-align-items: center;
+                        align-items: center;
+                -webkit-justify-content: space-between;
+                        justify-content: space-between;
+
+                .footer_nav {
+                    width: 70%;
+                    -webkit-flex: 0 1 100%;
+                        -ms-flex: 0 1 100%;
+                            flex: 0 1 100%;
+
+                    ul {
+                        display: flex;
+                        -webkit-align-items: center;
+                                align-items: center;
+                        -webkit-justify-content: space-between;
+                                justify-content: space-between;
+                    }
+
+                    .footer_nav__link {
+                        text-transform: capitalize;
+                        letter-spacing: 2px;
+                        @include adaptiv-font(20, 16, 400, #000);
+
+                        a {
+                            color: #9a9a9a;
+                            transition: all .4s ease-out;
+
+                            &:hover {
+                                color: rgb(68, 66, 66);
+                            }
+
+                            &:focus {
+                                color: #9a9a9a;
+                            }
+                        }
+                    }
+                    
+                    @media (max-width: 997px) {
+                        width: 100%;
+                    }
+
+                    @media (max-width: 767px) {
+                        display: none;
+                    }
+                }
+
+                .footer_content {
+                    -webkit-flex: 0 1 100%;
+                        -ms-flex: 0 1 100%;
+                            flex: 0 1 100%;
+                    text-align: center;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    line-height: 30px;
+                    @include adaptiv-font(20, 16, 400, #9a9a9a);
+
+                    @media (max-width: 767px) {
+                        display: flex;
+                        -webkit-align-items: center;
+                                align-items: center;
+                    }
+                }
+
+                @media (max-width: 997px) {
+                    width: 70%;
+                }
+
+                @media (max-width: 767px) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
